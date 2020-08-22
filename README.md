@@ -1,44 +1,59 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+###  bable-jest 
+```
+冲突，设置env
+```
 
-## Available Scripts
+### @storybook/addon-essentials
+```
+代替action包
+```
 
-In the project directory, you can run:
 
-### `yarn start`
+create-react-app  yourProjectName --template typescript
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+npx -p @storybook/cli sb init --type react_scripts
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+actions插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/actions
 
-### `yarn test`
+links插件用来在各个故事书中进行跳转，相当于a标签一样，是个很常用的插件。
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+links插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/links
 
-### `yarn build`
+除了这几个，还有些比较常用而且好用的插件：
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+viewport插件，用来自由调整视口大小。
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/viewport
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+knob插件，用来调整输入范例。
 
-### `yarn eject`
+插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/knobs
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+docs插件，用来制作文档。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/docs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+a11y插件，用来自动检测组件是否支持视障人士等规范的。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/a11y
 
-## Learn More
+source插件，故事书上的源码映射。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+插件文档地址https://github.com/storybookjs/storybook/tree/master/addons/storysource
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+target：编译之后生成的 JavaScript 文件需要遵循的标准，可选值："ES3"（默认），"ES5"，"ES6"/"ES2015"，"ES2016"，"ES2017"或"ESNext"。我们选择了 es5 为了使包具有更好的浏览器兼容性。
+module：指定生成哪个模块系统代码，默认值：target === "ES3" or "ES5" ? "CommonJS" : "ES6"。
+declaration：是否生成对应的声明文件，默认值：false。在构建包时，应该设置为 true，这样 TypeScript 会将生成的声明文件和对应编译后的 JavaScript 代码一起导出，以便包可以在 TypeScript 和 JavaScript 项目中同时使用。本项目中生成的声明文件是 /lib/index.d.ts。
+outDir：指定输出目录。编译后的 JavaScript 代码会在与 tsconfig.json 同级的 lib 文件夹中。
+strict：是否启用所有严格类型检查选项，默认值：false。
+lib：编译需要的库文件，例如你指定的 target 是 ES5，但是在代码中使用了 ES6 特性，就需要在 lib 中加上 ES6。默认值：如果 lib 没有指定默认注入的库的列表，默认注入的库为：
+
+target ES5：DOM，ES5，ScriptHost。
+target ES6：DOM，ES6，DOM.Iterable，ScriptHost。
+
+
+include：指定要编译的目录。
+exclude：指定不编译的目录。node_modules 和 __tests__ 只是在开发阶段使用，构建阶段无需编译。
+
